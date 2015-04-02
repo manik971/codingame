@@ -1,7 +1,9 @@
 import java.util.*;
 import java.io.*;
 
-// Power Of Thor
+/**
+ * Power Of Thor
+ **/
 class Player {
 
     public static void main(String args[]) {
