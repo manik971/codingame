@@ -1,36 +1,42 @@
-import java.util.*;
-import java.io.*;
+import java.util.Scanner;
 
 /**
  * Power Of Thor
  **/
 class Player {
 
+    /**
+     * Main
+     **/
     public static void main(String args[]) {
         Scanner in = new Scanner(System.in);
-        int LX = in.nextInt(); // the X position of the light of power
-        int LY = in.nextInt(); // the Y position of the light of power
-        int TX = in.nextInt(); // Thor's starting X position
-        int TY = in.nextInt(); // Thor's starting Y position
+        // the X position of the light of power
+        int destX = in.nextInt();
+        // the Y position of the light of power
+        int destY = in.nextInt();
+        // Thor's starting X position
+        int thorX = in.nextInt();
+        // Thor's starting Y position
+        int thorY = in.nextInt();
 
         // game loop
         while (true) {
             String move = "";
-            if(LY > TY){
+            if (destY > thorY) {
                 move += "S";
-                TY++;
+                thorY++;
             }
-            else if(LY < TY){
+            else if (destY < thorY) {
                 move += "N";
-                TY--;
+                thorY--;
             }
-            if(LX > TX){
+            if (destX > thorX) {
                 move += "E";
-                TX--;
+                thorX--;
             }
-            else if(LX < TX){
+            else if (destX < thorX) {
                 move += "W";
-                TX++;
+                thorX++;
             }
             // next move direction
             System.out.println(move);
