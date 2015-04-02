@@ -1,41 +1,48 @@
-import java.util.*;
-import java.io.*;
+import java.util.Scanner;
 
 /**
  * Skynet: The Chasm
  **/
 class Player {
 
+    /**
+     * Main
+     **/
     public static void main(String args[]) {
         Scanner in = new Scanner(System.in);
-        int R = in.nextInt(); // the length of the road before the gap.
-        int G = in.nextInt(); // the length of the gap.
-        int L = in.nextInt(); // the length of the landing platform.
-        
+        // the length of the road before the gap
+        int roadLength = in.nextInt();
+        // the length of the gap
+        int gapLength = in.nextInt();
+        // the length of the landing platform
+        int landingLength = in.nextInt();
+
         // game loop
         while (true) {
-            int S = in.nextInt(); // the motorbike's speed.
-            int X = in.nextInt(); // the position on the road of the motorbike.
-            
+            // the motorbike's speed
+            int motoSpeed = in.nextInt();
+            // the position on the road of the motorbike
+            int motoPos = in.nextInt();
+
             String action = "WAIT";
-            
+
             // before gap
-            if(X < R){
-                if(S < G + 1){
+            if (motoPos < roadLength) {
+                if (motoSpeed < gapLength + 1) {
                     action = "SPEED";
                 }
-                else if(S > G + 1){
+                else if (motoSpeed > gapLength + 1) {
                     action = "SLOW";
                 }
-                if(X + S >= R + G){
+                if (motoPos + motoSpeed >= roadLength + gapLength) {
                     action = "JUMP";
                 }
             }
-            else if(X >= R + G){
+            else if (motoPos >= roadLength + gapLength) {
                 action = "SLOW";
             }
             // action to do: SPEED, SLOW, JUMP or WAIT
-            System.out.println(action); 
+            System.out.println(action);
         }
     }
 }
