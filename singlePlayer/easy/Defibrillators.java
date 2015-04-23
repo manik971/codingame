@@ -3,47 +3,71 @@ import java.io.*;
 import java.math.*;
 
 /**
- * Auto-generated code below aims at helping you parse
- * the standard input according to the problem statement.
+ * Defibrillators
  **/
 class Solution {
 
     public static void main(String args[]) {
         Scanner in = new Scanner(System.in);
-        String LON = in.next();
+        String longitude = in.next();
         in.nextLine();
-        String LAT = in.next();
+        String latitude = in.next();
         in.nextLine();
-        int N = in.nextInt();
+        int nbDefib = in.nextInt();
         in.nextLine();
-        double min_distance = 99999.99;
+        double minDistance = Double.MAX_VALUE;
         String nom = "UNKNOWN";
-        
-        if(N > 1){
-            for (int i = 0; i < N; i++) {
-                //données defibrilateur
-                String [] DEFIB = in.nextLine().split(";");
-                double distance = calculDistance(stringToDouble(LON), stringToDouble(LAT), stringToDouble(DEFIB[4]), stringToDouble(DEFIB[5]));
-                if(distance < min_distance){
-                    nom = DEFIB[1];
-                    min_distance = distance;
+
+        // many defibrallors
+        if (nbDefib > 1) {
+            for (int i = 0; i < nbDefib; i++) {
+                // get defibrillator data
+                String[] defib = in.nextLine().split(";");
+                // calcul the distance between the user position and the current
+                // defibrillator
+                double distance = calculDistance(stringToDouble(longitude), stringToDouble(latitude), stringToDouble(defib[4]),
+                        stringToDouble(defib[5]));
+                // keep the closest defibrillator
+                if (distance < minDistance) {
+                    nom = defib[1];
+                    minDistance = distance;
                 }
-            }   
+            }
         }
-        else {
+        else if (nbDefib > 0) {
             nom = in.nextLine().split(";")[1];
         }
-        
+
         System.out.println(nom);
     }
-    
-    public static double calculDistance(double longitudeA_, double latitudeA_, double longitudeB_, double latitudeB_){
+
+    /**
+     * Calcul the distance between two position
+     * 
+     * @param longitudeA_
+     *            longitude position A
+     * @param latitudeA_
+     *            latitude position A
+     * @param longitudeB_
+     *            longitude position B
+     * @param latitudeB_
+     *            latitude position B
+     * @return the distance
+     **/
+    public static double calculDistance(double longitudeA_, double latitudeA_, double longitudeB_, double latitudeB_) {
         double x = (longitudeB_ - longitudeA_) * Math.cos((latitudeA_ + latitudeB_) / 2);
         double y = latitudeB_ - latitudeA_;
         return Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2)) * 6371;
     }
-    
-    public static double stringToDouble(String text_){
+
+    /**
+     * Convert a String into a double
+     * 
+     * @param text_
+     *            String entry
+     * @return the double
+     */
+    public static double stringToDouble(String text_) {
         return Double.parseDouble(text_.replaceAll(",", "."));
     }
 }
