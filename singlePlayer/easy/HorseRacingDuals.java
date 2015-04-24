@@ -10,20 +10,23 @@ class Solution {
 
     public static void main(String args[]) {
         Scanner in = new Scanner(System.in);
-        int N = in.nextInt();
-        int [] puissanceTab = new int[N];
-        for (int i = 0; i < N; i++) {
-            puissanceTab[i] = in.nextInt();
+        int nbHorses = in.nextInt();
+        // strength table creation
+        int[] strengthTab = new int[nbHorses];
+        for (int i = 0; i < nbHorses; i++) {
+            strengthTab[i] = in.nextInt();
         }
-        
-        //tri
-        Arrays.sort(puissanceTab);
-        
-        int min_ecart = puissanceTab[1] - puissanceTab[0];
-        for (int i = 1; i < puissanceTab.length - 1; i++) {
-            int ecart = puissanceTab[i + 1] - puissanceTab[i];
-            min_ecart = Math.min(min_ecart, ecart);
+        // strength table sorting
+        Arrays.sort(strengthTab);
+        // get the minimal difference strength
+        int minDiff = strengthTab[1] - strengthTab[0];
+        for (int i = 1; i < strengthTab.length - 1; i++) {
+            int diff = strengthTab[i + 1] - strengthTab[i];
+            minDiff = Math.min(minDiff, diff);
+            if (minDiff == 0) {
+                break;
+            }
         }
-        System.out.println(min_ecart);
+        System.out.println(minDiff);
     }
 }
