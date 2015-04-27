@@ -53,7 +53,7 @@ class Player {
             // action to do to reach the target
             String action = "WAIT";
 
-            // if not in the exit floor, update target position
+            // update target position if the leading clone is not in the exit floor
             if (cloneFloor >= 0 && cloneFloor != exitFloor) {
                 targetPos = elevators.get(cloneFloor);
             }
