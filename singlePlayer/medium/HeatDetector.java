@@ -19,12 +19,15 @@ class Player {
         int YBot = in.nextInt();
         // maximum number of turns before game over
         int N = in.nextInt();
+        //batman position
         int X0 = in.nextInt();
         int Y0 = in.nextInt();
         
         // game loop
         while (true) {
-            String bombDir = in.next(); // the direction of the bombs from batman"s current location (U, UR, R, DR, D, DL, L or UL)
+            // the direction of the bombs from batman"s current location
+            // (U, UR, R, DR, D, DL, L or UL)
+            String bombDir = in.next();
             //update area with direction
             if(bombDir.contains("U")){
                 YBot = Y0;
@@ -38,11 +41,10 @@ class Player {
             if(bombDir.contains("L")){
                 XRight = X0;
             }
-            
             X0 = (XLeft + XRight) / 2;
             Y0 = (YBot + YTop) / 2;
-            
-            System.out.println(X0 + " " + Y0); // the location of the next window Batman should jump to.
+            // the location of the next window Batman should jump to.
+            System.out.println(X0 + " " + Y0);
         }
     }
 }
