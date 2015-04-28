@@ -20,15 +20,15 @@ class Solution {
         coordY[0] = in.nextInt();
         // initialize all buildings coordinates
         for (int i = 1; i < nbBuildings; i++) {
-            int X = in.nextInt();
-            int Y = in.nextInt();
-            coordY[i] = Y;
+            int x = in.nextInt();
+            int y = in.nextInt();
+            coordY[i] = y;
             // update min & max coord
-            if (X < minX) {
-                minX = X;
+            if (x < minX) {
+                minX = x;
             }
-            else if (X > maxX) {
-                maxX = X;
+            else if (x > maxX) {
+                maxX = x;
             }
         }
         // find the best main cable Y position
