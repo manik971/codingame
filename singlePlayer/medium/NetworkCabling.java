@@ -23,7 +23,7 @@ class Solution {
             int x = in.nextInt();
             int y = in.nextInt();
             coordY[i] = y;
-            // update min & max coord
+            // update min & max X coord
             if (x < minX) {
                 minX = x;
             }
